@@ -37,7 +37,12 @@ while True:
         print("Input not valid. Try again.")
     
 while play:
-    server_message = json.loads(s.recv(BUF_SIZE).decode())
+    server_message = s.recv(BUF_SIZE)
+    if server_message:
+        server_message = json.loads(s.recv(BUF_SIZE).decode())
+    else:
+        print("Server refused to connect.")
+        break
 
     # print server message right away
     print(server_message["data"])
