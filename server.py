@@ -83,7 +83,7 @@ def connect_client(connection, address):
                 word_to_guess = words[client_data]
             word_progress = ["_" for i in range(len(word_to_guess))]
             progress = " ".join(word_progress)
-            connection.sendall(generate_server_message(progress, word_to_guess, letter_attempts).encode())
+            connection.sendall(messgenerate_server_message(progress, word_to_guess, letter_attempts)age.encode())
         else:# user/client guesses letters in word
             if client_data not in letter_attempts and client_data in word_to_guess:
                 letter_attempts.add(client_data)

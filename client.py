@@ -38,11 +38,10 @@ while True:
     
 while play:
     server_message = s.recv(BUF_SIZE)
-    if server_message:
-        server_message = json.loads(s.recv(BUF_SIZE).decode())
-    else:
+    if not server_message:
         print("Server refused to connect.")
         break
+    server_message = json.loads(server_message.decode())
 
     # print server message right away
     print(server_message["data"])
