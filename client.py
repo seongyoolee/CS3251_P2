@@ -21,7 +21,7 @@ def generate_client_message(data):
 
 while True:
     user_response = input("Ready to start game? (y/n)").lower()
-    print(user_response)
+    # print(user_response)
     if user_response.isnumeric():
         word_index = int(user_response) - 1
         s.sendall(generate_client_message(word_index).encode())
@@ -37,11 +37,17 @@ while True:
         print("Input not valid. Try again.")
     
 while play:
-    server_message = s.recv(BUF_SIZE)
-    if not server_message:
+    try:
+        server_message = s.recv(BUF_SIZE)
+        server_message = json.loads(server_message.decode())
+    except:
         print("Server refused to connect.")
         break
-    server_message = json.loads(server_message.decode())
+    # server_message = s.recv(BUF_SIZE)
+    # if not server_message:
+    #     print("Server refused to connect.")
+    #     break
+    # server_message = json.loads(server_message.decode())
 
     # print server message right away
     print(server_message["data"])
