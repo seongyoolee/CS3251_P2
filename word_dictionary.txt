@@ -1,4 +1,4 @@
-4 10
+4 15
 jazz
 buzz
 hajj
@@ -9,3 +9,8 @@ buff
 jiff
 junk
 quiz
+bone
+rock
+kiss
+rekt
+pets
